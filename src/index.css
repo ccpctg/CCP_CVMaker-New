@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family: 'Plus Jakarta Sans', 'Hind Siliguri', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #0f172a;
+    color: #334155;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-anek-bangla {
+  font-family: 'Anek Bangla', system-ui, sans-serif;
+}
+
+.font-hind-siliguri {
+  font-family: 'Hind Siliguri', system-ui, sans-serif;
+}
+
+.font-noto-sans-bengali {
+  font-family: 'Noto Sans Bengali', system-ui, sans-serif;
+}
+
+.font-galada {
+  font-family: 'Galada', cursive, sans-serif;
+}
+
+.font-tiro-bangla {
+  font-family: 'Tiro Bangla', serif;
+}
+
+.font-plus-jakarta {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-outfit {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+/* Print styling for exact A4 paper output */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    height: auto !important;
+    transform: none !important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Custom scrollbar for sleek dashboard UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}

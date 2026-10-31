@@ -1,0 +1,6 @@
+{
+  "name": "Creative Concept Point CV Maker (ক্রিয়েটিভ কনসেপ্ট পয়েন্ট সিভি মেকার)",
+  "description": "Modern bilingual CV and Matrimonial Biodata Maker tailored for Bangladesh and international careers with real-time preview, AI assistance, 5 executive themes, photo styling, and pixel-perfect PDF export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
