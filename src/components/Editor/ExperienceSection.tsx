@@ -237,7 +237,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                     type="text"
                     value={org.organization}
                     onChange={(e) => handleUpdateOrg(org.id, { organization: e.target.value })}
-                    placeholder="e.g. Gulshakhali Development Foundation"
+                    placeholder="e.g. Bangladesh Youth Creative Forum"
                     className="w-full px-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-teal-400"
                   />
                 </div>

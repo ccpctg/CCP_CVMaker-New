@@ -98,7 +98,7 @@ export const EducationSection: React.FC<EducationSectionProps> = ({
                   type="text"
                   value={item.institution}
                   onChange={(e) => handleUpdate(item.id, { institution: e.target.value })}
-                  placeholder="e.g. Government Hazi Muhammad Mohsin College"
+                  placeholder="e.g. University of Dhaka / Dhaka City College"
                   className="w-full px-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-amber-400"
                 />
               </div>

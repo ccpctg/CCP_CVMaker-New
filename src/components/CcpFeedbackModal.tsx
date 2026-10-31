@@ -29,14 +29,12 @@ export const CcpFeedbackModal: React.FC<CcpFeedbackModalProps> = ({
     e.preventDefault();
     if (!message.trim()) return;
 
-    // Construct WhatsApp message URL for direct delivery to CCP
-    const whatsappText = encodeURIComponent(
-      `[CCP CV Maker Feedback]\nনাম: ${senderName || 'Anonymous'}\nফোন: ${senderPhone || 'N/A'}\nরেটিং: ${rating} Stars\nধরন: ${feedbackType}\nবার্তা: ${message}`
+    // Construct mailto or local submission for CCP Feedback
+    const mailSubject = encodeURIComponent(`[CCP CV Maker Feedback] ${feedbackType.toUpperCase()} (${rating} Stars)`);
+    const mailBody = encodeURIComponent(
+      `Name: ${senderName || 'Anonymous'}\nPhone: ${senderPhone || 'N/A'}\nRating: ${rating} Stars\nType: ${feedbackType}\n\nMessage:\n${message}`
     );
-    const waUrl = `https://wa.me/8801571247902?text=${whatsappText}`;
-
-    // Open WhatsApp in new tab or trigger mail
-    window.open(waUrl, '_blank');
+    window.location.href = `mailto:creativeconceptpoint@gmail.com?subject=${mailSubject}&body=${mailBody}`;
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -207,7 +205,7 @@ export const CcpFeedbackModal: React.FC<CcpFeedbackModalProps> = ({
             {/* Agency Contact Footer */}
             <div className="flex items-center justify-between p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-[11px] text-slate-400">
               <span className="flex items-center gap-1.5 text-teal-400 font-medium">
-                <Phone className="w-3.5 h-3.5" /> 01571-247902
+                Creative Concept Point Official Support
               </span>
               <span className="flex items-center gap-1.5 text-amber-300 font-medium">
                 <Mail className="w-3.5 h-3.5" /> creativeconceptpoint@gmail.com

@@ -38,7 +38,7 @@ export const MatrimonialSection: React.FC<MatrimonialSectionProps> = ({
               type="text"
               value={family.fatherName}
               onChange={(e) => onUpdateFamily({ fatherName: e.target.value })}
-              placeholder="e.g. Anowar Hossain / আনোয়ার হোসেন"
+              placeholder="e.g. Md. Rafiqul Islam / মো. রফিকুল ইসলাম"
               className="w-full px-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-amber-400"
             />
           </div>
@@ -51,7 +51,7 @@ export const MatrimonialSection: React.FC<MatrimonialSectionProps> = ({
               type="text"
               value={family.fatherOccupation}
               onChange={(e) => onUpdateFamily({ fatherOccupation: e.target.value })}
-              placeholder="e.g. Pharmacy Business / ফার্মেসি ব্যবসায়ী"
+              placeholder="e.g. Retired Govt. Officer / সরকারি কর্মকর্তা"
               className="w-full px-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-amber-400"
             />
           </div>
@@ -64,7 +64,7 @@ export const MatrimonialSection: React.FC<MatrimonialSectionProps> = ({
               type="text"
               value={family.motherName}
               onChange={(e) => onUpdateFamily({ motherName: e.target.value })}
-              placeholder="e.g. Jusna Begum / জুছনা বেগম"
+              placeholder="e.g. Tahmina Akter / তাহমিনা আক্তার"
               className="w-full px-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-amber-400"
             />
           </div>
@@ -90,7 +90,7 @@ export const MatrimonialSection: React.FC<MatrimonialSectionProps> = ({
               type="text"
               value={family.siblingsCount}
               onChange={(e) => onUpdateFamily({ siblingsCount: e.target.value })}
-              placeholder="e.g. 3 Sisters and 1 Brother / ৩ বোন ও ১ ভাই"
+              placeholder="e.g. 1 Brother and 1 Sister / ১ ভাই ও ১ বোন"
               className="w-full px-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:border-amber-400"
             />
           </div>
@@ -103,7 +103,7 @@ export const MatrimonialSection: React.FC<MatrimonialSectionProps> = ({
               type="text"
               value={family.positionInFamily}
               onChange={(e) => onUpdateFamily({ positionInFamily: e.target.value })}
-              placeholder="e.g. Youngest / কনিষ্ঠ সন্তান"
+              placeholder="e.g. Eldest / জ্যেষ্ঠ সন্তান"
               className="w-full px-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:border-amber-400"
             />
           </div>
@@ -116,7 +116,7 @@ export const MatrimonialSection: React.FC<MatrimonialSectionProps> = ({
               type="text"
               value={family.sistersStatus}
               onChange={(e) => onUpdateFamily({ sistersStatus: e.target.value })}
-              placeholder="e.g. All Three Sisters Are Married"
+              placeholder="e.g. University Student / অধ্যয়নরত"
               className="w-full px-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:border-amber-400"
             />
           </div>

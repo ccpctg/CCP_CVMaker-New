@@ -1,6 +1,7 @@
 import React, { useState, useRef, MouseEvent, TouchEvent } from 'react';
 import { X, ZoomIn, ZoomOut, Upload, RotateCcw, Check, Sparkles } from 'lucide-react';
 import { PersonalDetails } from '../types/cv.js';
+import { DEFAULT_AVATAR_URL, FEMALE_AVATAR_URL } from '../data/sampleData.js';
 
 interface PhotoEditorModalProps {
   isOpen: boolean;
@@ -20,11 +21,11 @@ export const PhotoEditorModal: React.FC<PhotoEditorModalProps> = ({
   if (!isOpen) return null;
 
   const [photoUrl, setPhotoUrl] = useState<string>(
-    personal.photoUrl || '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg'
+    personal.photoUrl || DEFAULT_AVATAR_URL
   );
-  const [zoom, setZoom] = useState<number>(personal.photoZoom || 1.15);
+  const [zoom, setZoom] = useState<number>(personal.photoZoom || 1.0);
   const [offset, setOffset] = useState<{ x: number; y: number }>(
-    personal.photoOffset || { x: 0, y: -20 }
+    personal.photoOffset || { x: 0, y: 0 }
   );
   const [shape, setShape] = useState<'circle' | 'rounded' | 'square'>(
     personal.photoShape || 'circle'
@@ -125,10 +126,10 @@ export const PhotoEditorModal: React.FC<PhotoEditorModalProps> = ({
     setZoom(1.0);
   };
 
-  const handleLoadCcpDefault = () => {
-    setPhotoUrl('/assets/aistudio/Minhaj_Bio-data_14f425df.jpg');
-    setZoom(1.15);
-    setOffset({ x: 0, y: -20 });
+  const handleLoadCcpDefault = (avatarUrl: string = DEFAULT_AVATAR_URL) => {
+    setPhotoUrl(avatarUrl);
+    setZoom(1.0);
+    setOffset({ x: 0, y: 0 });
     setShape('circle');
   };
 
@@ -356,15 +357,23 @@ export const PhotoEditorModal: React.FC<PhotoEditorModalProps> = ({
             </div>
           </div>
 
-          {/* Quick link to restore reference image */}
-          <div className="pt-1">
+          {/* Quick link to select clean vector avatars */}
+          <div className="pt-1 flex flex-wrap items-center gap-3">
             <button
               type="button"
-              onClick={handleLoadCcpDefault}
-              className="text-xs text-amber-400/90 hover:text-amber-300 flex items-center gap-1.5 transition cursor-pointer"
+              onClick={() => handleLoadCcpDefault(DEFAULT_AVATAR_URL)}
+              className="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 flex items-center gap-1.5 transition cursor-pointer"
             >
               <Sparkles className="w-3 h-3" />
-              ক্রিয়েটিভ কনসেপ্ট পয়েন্ট মূল রেফারেন্স ছবি ব্যবহার করুন
+              ডিফল্ট পুরুষ অ্যাভাটার (Male Avatar)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleLoadCcpDefault(FEMALE_AVATAR_URL)}
+              className="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-slate-700 flex items-center gap-1.5 transition cursor-pointer"
+            >
+              <Sparkles className="w-3 h-3" />
+              ডিফল্ট নারী অ্যাভাটার (Female Avatar)
             </button>
           </div>
         </div>

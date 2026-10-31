@@ -2,6 +2,7 @@ import React from 'react';
 import { Camera, MapPin, Phone, Mail, Globe, Sparkles } from 'lucide-react';
 import { PersonalDetails, Language } from '../../types/cv.js';
 import { UI_STRINGS } from '../../data/translations.js';
+import { DEFAULT_AVATAR_URL } from '../../data/sampleData.js';
 
 interface PersonalSectionProps {
   personal: PersonalDetails;
@@ -36,7 +37,7 @@ export const PersonalSection: React.FC<PersonalSectionProps> = ({
             style={{ borderColor: accentColor }}
           >
             <img
-              src={personal.photoUrl || '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg'}
+              src={personal.photoUrl || DEFAULT_AVATAR_URL}
               alt={personal.fullName}
               className="w-full h-full object-cover"
               style={{
@@ -66,7 +67,7 @@ export const PersonalSection: React.FC<PersonalSectionProps> = ({
               type="text"
               value={personal.fullName}
               onChange={(e) => onChange({ fullName: e.target.value })}
-              placeholder="e.g. MD. MINHAJUL ABEDIN"
+              placeholder="e.g. TANVIR AHMED"
               className="w-full px-3 py-2 text-sm font-semibold bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition"
             />
           </div>
@@ -79,7 +80,7 @@ export const PersonalSection: React.FC<PersonalSectionProps> = ({
               type="text"
               value={personal.tagline}
               onChange={(e) => onChange({ tagline: e.target.value })}
-              placeholder="e.g. GRAPHIC DESIGNER & CALLIGRAPHER"
+              placeholder="e.g. CREATIVE DESIGNER & BRAND CONSULTANT"
               className="w-full px-3 py-1.5 text-xs bg-slate-900 border border-slate-700 rounded-lg text-amber-300 font-medium placeholder-slate-500 focus:outline-none focus:border-amber-400 transition"
             />
           </div>
@@ -101,7 +102,7 @@ export const PersonalSection: React.FC<PersonalSectionProps> = ({
               rows={2}
               value={personal.currentAddress}
               onChange={(e) => onChange({ currentAddress: e.target.value })}
-              placeholder="Dewanhat, Chattogram, Bangladesh"
+              placeholder="Dhanmondi, Dhaka, Bangladesh"
               className="w-full px-3 py-1.5 text-xs bg-slate-900 border border-slate-700 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-400 resize-none transition"
             />
           </div>
@@ -113,7 +114,7 @@ export const PersonalSection: React.FC<PersonalSectionProps> = ({
               rows={2}
               value={personal.permanentAddress}
               onChange={(e) => onChange({ permanentAddress: e.target.value })}
-              placeholder="Gulshakhali, Langadu, Rangamati, Bangladesh"
+              placeholder="Sadar Road, Cumilla, Bangladesh"
               className="w-full px-3 py-1.5 text-xs bg-slate-900 border border-slate-700 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-400 resize-none transition"
             />
           </div>
@@ -164,7 +165,7 @@ export const PersonalSection: React.FC<PersonalSectionProps> = ({
               type="text"
               value={personal.facebook}
               onChange={(e) => onChange({ facebook: e.target.value })}
-              placeholder="e.g. Md. Minhajul Abedin"
+              placeholder="e.g. Tanvir Ahmed Official"
               className="w-full px-3 py-1.5 text-xs bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:border-amber-400"
             />
           </div>
@@ -177,7 +178,7 @@ export const PersonalSection: React.FC<PersonalSectionProps> = ({
               type="text"
               value={personal.instagram}
               onChange={(e) => onChange({ instagram: e.target.value })}
-              placeholder="e.g. minhaj_calligraphy"
+              placeholder="e.g. tanvir_design"
               className="w-full px-3 py-1.5 text-xs bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:border-amber-400"
             />
           </div>
@@ -190,7 +191,7 @@ export const PersonalSection: React.FC<PersonalSectionProps> = ({
               type="text"
               value={personal.linkedin}
               onChange={(e) => onChange({ linkedin: e.target.value })}
-              placeholder="e.g. minhajul-abedin"
+              placeholder="e.g. tanvir-ahmed"
               className="w-full px-3 py-1.5 text-xs bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:border-amber-400"
             />
           </div>

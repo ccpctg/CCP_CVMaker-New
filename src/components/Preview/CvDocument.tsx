@@ -17,6 +17,7 @@ import { CVData } from '../../types/cv.js';
 import { THEMES } from '../../utils/themeData.js';
 import { formatNumberByLanguage } from '../../utils/numeralConverter.js';
 import { UI_STRINGS } from '../../data/translations.js';
+import { DEFAULT_AVATAR_URL } from '../../data/sampleData.js';
 import { CcpLogo } from '../CcpLogo.js';
 
 interface CvDocumentProps {
@@ -142,39 +143,39 @@ export const CvDocument: React.FC<CvDocumentProps> = ({ data, onUpdateField }) =
           />
 
           <div className="flex flex-row min-h-[1123px]">
-            {/* LEFT SIDEBAR (Curved Solid Column) */}
+            {/* LEFT SIDEBAR (Curved Solid Column - Zero Gap Alignment) */}
             <div
-              className="w-[275px] flex-shrink-0 text-white flex flex-col justify-between relative"
+              className="w-[275px] flex-shrink-0 text-white flex flex-col justify-start relative"
               style={{
                 backgroundColor: theme.sidebarBg,
               }}
             >
               {/* Top Identity Block */}
-              <div className="pt-7 px-4 text-center">
+              <div className="pt-6 px-4 text-center">
                 <EditableText
                   tag="h1"
-                  value={personal.fullName || 'MD. MINHAJUL ABEDIN'}
+                  value={personal.fullName || 'TANVIR AHMED'}
                   onChangeText={(val) => onUpdateField?.('personal.fullName', val)}
                   className="text-xl sm:text-2xl font-black uppercase tracking-wider leading-tight text-white block font-sans-modern"
                 />
 
                 <EditableText
                   tag="p"
-                  value={personal.tagline || 'GRAPHIC DESIGNER & CALLIGRAPHER'}
+                  value={personal.tagline || 'CREATIVE DESIGNER & BRAND CONSULTANT'}
                   onChangeText={(val) => onUpdateField?.('personal.tagline', val)}
                   className="mt-1 text-[11px] font-bold tracking-widest uppercase block"
                   style={{ color: theme.badgeBg }}
                 />
 
-                {/* Circular Profile Photo with Gold Accent Border */}
-                <div className="mt-4 flex justify-center">
+                {/* Circular Profile Avatar with Gold Accent Border */}
+                <div className="mt-3.5 flex justify-center">
                   <div
                     className={`relative overflow-hidden shadow-2xl border-4 ${
                       personal.photoShape === 'circle'
-                        ? 'rounded-full w-38 h-38'
+                        ? 'rounded-full w-36 h-36'
                         : personal.photoShape === 'rounded'
-                        ? 'rounded-2xl w-38 h-38'
-                        : 'rounded-lg w-38 h-38'
+                        ? 'rounded-2xl w-36 h-36'
+                        : 'rounded-lg w-36 h-36'
                     }`}
                     style={{
                       borderColor: theme.badgeBg,
@@ -182,7 +183,7 @@ export const CvDocument: React.FC<CvDocumentProps> = ({ data, onUpdateField }) =
                     }}
                   >
                     <img
-                      src={personal.photoUrl || '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg'}
+                      src={personal.photoUrl || DEFAULT_AVATAR_URL}
                       alt={personal.fullName}
                       className="w-full h-full object-cover"
                       style={{
@@ -195,10 +196,10 @@ export const CvDocument: React.FC<CvDocumentProps> = ({ data, onUpdateField }) =
                   </div>
                 </div>
 
-                {/* CONTACT ME Block */}
-                <div className="mt-5 text-left">
+                {/* CONTACT ME Block (Neatly Aligned) */}
+                <div className="mt-4 px-2 text-left">
                   <div
-                    className="border-b-2 pb-0.5 mb-2 inline-block"
+                    className="border-b-2 pb-0.5 mb-2.5 inline-block"
                     style={{ borderColor: theme.badgeBg }}
                   >
                     <h3 className="text-xs font-black tracking-widest uppercase text-white">
@@ -206,51 +207,61 @@ export const CvDocument: React.FC<CvDocumentProps> = ({ data, onUpdateField }) =
                     </h3>
                   </div>
 
-                  <div className="space-y-1 text-[11px] font-medium text-slate-100">
+                  <div className="space-y-1.5 text-[11px] font-medium text-slate-100">
                     {personal.phone && (
-                      <div className="flex items-center gap-2">
-                        <span className="p-1 rounded-full bg-white/10 text-amber-300">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-5 h-5 rounded-full bg-white/10 text-amber-300 flex items-center justify-center flex-shrink-0">
                           <Phone className="w-2.5 h-2.5" />
                         </span>
                         <EditableText
                           value={fnNum(personal.phone)}
                           onChangeText={(val) => onUpdateField?.('personal.phone', val)}
-                          className="font-bold text-xs tracking-wide"
+                          className="font-bold text-xs tracking-wide leading-none"
                         />
                       </div>
                     )}
 
                     {personal.email && (
-                      <div className="flex items-center gap-2">
-                        <span className="p-1 rounded-full bg-white/10 text-amber-300">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-5 h-5 rounded-full bg-white/10 text-amber-300 flex items-center justify-center flex-shrink-0">
                           <Mail className="w-2.5 h-2.5" />
                         </span>
                         <EditableText
                           value={personal.email}
                           onChangeText={(val) => onUpdateField?.('personal.email', val)}
-                          className="truncate text-[10.5px]"
+                          className="truncate text-[10.5px] leading-none"
                         />
                       </div>
                     )}
 
                     {(personal.facebook || personal.instagram) && (
-                      <div className="flex items-center gap-2">
-                        <span className="p-1 rounded-full bg-white/10 text-amber-300">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-5 h-5 rounded-full bg-white/10 text-amber-300 flex items-center justify-center flex-shrink-0">
                           <Facebook className="w-2.5 h-2.5" />
                         </span>
-                        <span className="truncate text-[10.5px]">
+                        <span className="truncate text-[10.5px] leading-none">
                           {personal.facebook || personal.instagram}
                         </span>
                       </div>
                     )}
 
+                    {personal.website && (
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-5 h-5 rounded-full bg-white/10 text-amber-300 flex items-center justify-center flex-shrink-0">
+                          <Globe className="w-2.5 h-2.5" />
+                        </span>
+                        <span className="truncate text-[10.5px] leading-none">
+                          {personal.website}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
 
-              {/* Lower Section: Curved Arch Container for Personal Info & Skills */}
+              {/* Lower Section: Curved Arch Container for Personal Info & Skills (Immediately below Contact) */}
               <div
-                className="mt-4 mx-2.5 mb-3 p-3.5 rounded-3xl text-slate-100 shadow-inner"
+                className="mt-4 mx-2.5 mb-3 p-4 rounded-3xl text-slate-100 shadow-inner flex-1 flex flex-col justify-start"
                 style={{
                   backgroundColor: 'rgba(0, 0, 0, 0.25)',
                   border: '1px solid rgba(255, 255, 255, 0.12)',
@@ -782,7 +793,7 @@ export const CvDocument: React.FC<CvDocumentProps> = ({ data, onUpdateField }) =
                 style={{ borderColor: theme.badgeBg }}
               >
                 <img
-                  src={personal.photoUrl || '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg'}
+                  src={personal.photoUrl || DEFAULT_AVATAR_URL}
                   alt={personal.fullName}
                   className="w-full h-full object-cover"
                   style={{
@@ -1030,7 +1041,7 @@ export const CvDocument: React.FC<CvDocumentProps> = ({ data, onUpdateField }) =
                 style={{ borderColor: theme.accent }}
               >
                 <img
-                  src={personal.photoUrl || '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg'}
+                  src={personal.photoUrl || DEFAULT_AVATAR_URL}
                   alt={personal.fullName}
                   className="w-full h-full object-cover"
                   style={{
@@ -1219,7 +1230,7 @@ export const CvDocument: React.FC<CvDocumentProps> = ({ data, onUpdateField }) =
                 style={{ borderColor: theme.primary }}
               >
                 <img
-                  src={personal.photoUrl || '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg'}
+                  src={personal.photoUrl || DEFAULT_AVATAR_URL}
                   alt={personal.fullName}
                   className="w-full h-full object-cover"
                   style={{
@@ -1324,7 +1335,7 @@ export const CvDocument: React.FC<CvDocumentProps> = ({ data, onUpdateField }) =
                 style={{ borderColor: theme.badgeBg }}
               >
                 <img
-                  src={personal.photoUrl || '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg'}
+                  src={personal.photoUrl || DEFAULT_AVATAR_URL}
                   alt={personal.fullName}
                   className="w-full h-full object-cover"
                   style={{

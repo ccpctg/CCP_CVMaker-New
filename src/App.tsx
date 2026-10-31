@@ -19,7 +19,7 @@ import {
   Paperclip,
 } from 'lucide-react';
 import { CVData, Language, Mode, PersonalDetails, Skill, WorkExperience } from './types/cv.js';
-import { SAMPLE_DATA_BN, SAMPLE_DATA_EN } from './data/sampleData.js';
+import { SAMPLE_DATA_BN, SAMPLE_DATA_EN, DEFAULT_AVATAR_URL } from './data/sampleData.js';
 import { UI_STRINGS } from './data/translations.js';
 import { THEMES } from './utils/themeData.js';
 import { exportCvToPdf, exportCvToImage, printCvDirect } from './utils/pdfExport.js';
@@ -41,21 +41,48 @@ import { GmailDraftsModal } from './components/GmailDraftsModal.js';
 import { CcpFeedbackModal } from './components/CcpFeedbackModal.js';
 import { CvDocument } from './components/Preview/CvDocument.js';
 
-const STORAGE_KEY = 'ccp_cv_maker_data_v1';
+const STORAGE_KEY = 'ccp_cv_maker_data_v3';
+
+function isLegacyPersonalState(parsed: any): boolean {
+  if (!parsed || !parsed.personal) return false;
+  const p = parsed.personal;
+  const raw = JSON.stringify(p).toLowerCase();
+  return (
+    raw.includes('minhaj') ||
+    raw.includes('মিনহাজ') ||
+    raw.includes('247902') ||
+    raw.includes('২৪৭৯০২') ||
+    raw.includes('1507003211169') ||
+    raw.includes('minhaj_bio-data')
+  );
+}
 
 export default function App() {
   // Load initial state from LocalStorage or fallback to SAMPLE_DATA_BN
   const [data, setData] = useState<CVData>(() => {
     try {
+      // Remove legacy storage keys that may contain old personal sample data
+      localStorage.removeItem('ccp_cv_maker_data_v1');
+      localStorage.removeItem('ccp_cv_maker_data_v2');
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (!isLegacyPersonalState(parsed)) {
+          return parsed;
+        }
       }
     } catch (e) {
       console.error('Failed to load from localStorage', e);
     }
     return SAMPLE_DATA_BN;
   });
+
+  // Ensure any in-memory state from hot reload containing old personal data or old photo is immediately sanitized
+  useEffect(() => {
+    if (isLegacyPersonalState(data)) {
+      setData(SAMPLE_DATA_BN);
+    }
+  }, [data]);
 
   // Persistent auto-save
   useEffect(() => {
@@ -127,7 +154,7 @@ export default function App() {
         personal: {
           fullName: '',
           tagline: '',
-          photoUrl: '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg',
+          photoUrl: DEFAULT_AVATAR_URL,
           photoZoom: 1.0,
           photoOffset: { x: 0, y: 0 },
           photoShape: 'circle',

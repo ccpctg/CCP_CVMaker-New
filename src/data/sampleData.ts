@@ -1,5 +1,87 @@
 import { CVData } from '../types/cv.js';
 
+// Clean, high-contrast SVG illustrated executive avatar (no real person photo)
+export const DEFAULT_AVATAR_URL = `data:image/svg+xml;utf8,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0f2942"/>
+        <stop offset="55%" stop-color="#153e5c"/>
+        <stop offset="100%" stop-color="#0b1f33"/>
+      </linearGradient>
+      <linearGradient id="suit" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#1e293b"/>
+        <stop offset="100%" stop-color="#0f172a"/>
+      </linearGradient>
+      <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fbbf24"/>
+        <stop offset="100%" stop-color="#d97706"/>
+      </linearGradient>
+    </defs>
+    <rect width="400" height="400" fill="url(#bg)"/>
+    <circle cx="200" cy="200" r="176" fill="none" stroke="url(#gold)" stroke-width="2" stroke-opacity="0.35"/>
+    <circle cx="200" cy="155" r="95" fill="#38bdf8" fill-opacity="0.07"/>
+    <!-- Shoulders & Suit -->
+    <path d="M65 400 C65 305 120 270 200 270 C280 270 335 305 335 400 Z" fill="url(#suit)"/>
+    <!-- White Shirt & Gold Tie -->
+    <polygon points="168,270 232,270 200,365" fill="#f8fafc"/>
+    <polygon points="192,282 208,282 214,358 200,375 186,358" fill="url(#gold)"/>
+    <!-- Suit Lapels -->
+    <path d="M168 270 L142 340 L185 360 L200 365 Z" fill="#334155"/>
+    <path d="M232 270 L258 340 L215 360 L200 365 Z" fill="#334155"/>
+    <!-- Neck -->
+    <rect x="176" y="225" width="48" height="52" rx="18" fill="#e2b897"/>
+    <!-- Ears -->
+    <circle cx="136" cy="168" r="14" fill="#d9ab88"/>
+    <circle cx="264" cy="168" r="14" fill="#d9ab88"/>
+    <!-- Head -->
+    <rect x="142" y="96" width="116" height="142" rx="56" fill="#ecc4a4"/>
+    <!-- Modern Styled Hair -->
+    <path d="M140 152 C136 104 162 80 202 80 C240 80 264 102 260 152 C254 126 238 112 200 112 C164 112 146 126 140 152 Z" fill="#1e293b"/>
+    <!-- Eyebrows & Eyes -->
+    <path d="M164 152 Q176 147 186 152" fill="none" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M214 152 Q224 147 236 152" fill="none" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="175" cy="164" r="5" fill="#0f172a"/>
+    <circle cx="225" cy="164" r="5" fill="#0f172a"/>
+    <!-- Gentle Confident Smile -->
+    <path d="M182 202 Q200 214 218 202" fill="none" stroke="#8c583a" stroke-width="4" stroke-linecap="round"/>
+  </svg>`
+)}`;
+
+export const FEMALE_AVATAR_URL = `data:image/svg+xml;utf8,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <linearGradient id="bgF" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#134e4a"/>
+        <stop offset="100%" stop-color="#0f172a"/>
+      </linearGradient>
+      <linearGradient id="goldF" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fbbf24"/>
+        <stop offset="100%" stop-color="#d97706"/>
+      </linearGradient>
+    </defs>
+    <rect width="400" height="400" fill="url(#bgF)"/>
+    <circle cx="200" cy="200" r="176" fill="none" stroke="url(#goldF)" stroke-width="2" stroke-opacity="0.35"/>
+    <!-- Back Hair / Hijab Silhouette -->
+    <path d="M122 165 C122 95 278 95 278 165 L292 280 L108 280 Z" fill="#1e293b"/>
+    <!-- Shoulders & Blazer -->
+    <path d="M72 400 C72 308 125 274 200 274 C275 274 328 308 328 400 Z" fill="#0f172a"/>
+    <path d="M158 274 L200 348 L242 274 Z" fill="url(#goldF)"/>
+    <!-- Neck -->
+    <rect x="180" y="226" width="40" height="52" rx="16" fill="#e5be9e"/>
+    <!-- Face -->
+    <rect x="148" y="106" width="104" height="132" rx="52" fill="#f0cBB0"/>
+    <!-- Front Hair Styling -->
+    <path d="M146 156 C148 112 174 96 200 96 C228 96 252 112 254 156 C236 128 216 120 200 120 C180 120 162 128 146 156 Z" fill="#1e293b"/>
+    <!-- Eyes & Smile -->
+    <path d="M168 156 Q178 151 186 156" fill="none" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M214 156 Q222 151 232 156" fill="none" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="177" cy="167" r="4.5" fill="#0f172a"/>
+    <circle cx="223" cy="167" r="4.5" fill="#0f172a"/>
+    <path d="M185 202 Q200 212 215 202" fill="none" stroke="#9d5c47" stroke-width="3.5" stroke-linecap="round"/>
+  </svg>`
+)}`;
+
 export const SAMPLE_DATA_EN: CVData = {
   mode: 'job',
   language: 'en',
@@ -12,167 +94,153 @@ export const SAMPLE_DATA_EN: CVData = {
   inlineEditing: false,
   useBengaliNumerals: false,
   personal: {
-    fullName: 'MD. MINHAJUL ABEDIN',
-    tagline: 'GRAPHIC DESIGNER & CALLIGRAPHER',
-    photoUrl: '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg',
-    photoZoom: 1.15,
-    photoOffset: { x: 0, y: -20 },
+    fullName: 'TANVIR AHMED',
+    tagline: 'CREATIVE DESIGNER & BRAND CONSULTANT',
+    photoUrl: DEFAULT_AVATAR_URL,
+    photoZoom: 1.0,
+    photoOffset: { x: 0, y: 0 },
     photoShape: 'circle',
-    phone: '01571-247902',
-    email: 'minhajulabedin902@gmail.com',
+    phone: '01700-000000',
+    email: 'tanvir.creative@example.com',
     website: 'creativeconceptpoint.com',
-    facebook: 'Md. Minhajul Abedin',
-    instagram: 'minhaj_calligraphy',
-    linkedin: 'minhajul-abedin',
-    currentAddress: 'Dewanhat, Chattogram, Bangladesh',
-    permanentAddress: 'Gulshakhali, Langadu, Rangamati, Bangladesh',
-    dob: '18 October 2000',
-    age: '26 Years',
-    height: '5\'5"',
-    weight: '68 kg',
-    complexion: 'Dark Brown',
-    bloodGroup: 'AB+',
+    facebook: 'Tanvir Ahmed Official',
+    instagram: 'tanvir_design_studio',
+    linkedin: 'tanvir-ahmed-bd',
+    currentAddress: 'Dhanmondi, Dhaka, Bangladesh',
+    permanentAddress: 'Sadar Road, Cumilla, Bangladesh',
+    dob: '15 January 1999',
+    age: '27 Years',
+    height: '5\'7"',
+    weight: '66 kg',
+    complexion: 'Fair / Medium',
+    bloodGroup: 'O+',
     maritalStatus: 'Unmarried',
     religion: 'Islam',
   },
   professionalSummary:
-    'Dedicated Design Entrepreneur and Calligrapher with extensive experience leading branding, creative printing, and large-scale cultural events. Proven leader in youth educational development and foundation initiatives.',
+    'Dedicated Creative Designer and Brand Strategist with extensive experience in corporate identity, digital media, printing solutions, and event management. Passionate about blending modern visual design with cultural heritage.',
   family: {
-    fatherName: 'Anowar Hossain',
-    fatherOccupation: 'Pharmacy Business',
-    motherName: 'Jusna Begum',
+    fatherName: 'Md. Rafiqul Islam',
+    fatherOccupation: 'Retired Government Officer',
+    motherName: 'Tahmina Akter',
     motherOccupation: 'Homemaker',
-    siblingsCount: '3 Sisters and 1 Brother',
-    positionInFamily: 'Youngest',
-    sistersStatus: 'All Three Sisters Are Married',
-    brothersStatus: 'Student / Professional',
-    financialStatus: 'Upper Middle Class (Respected Family)',
+    siblingsCount: '1 Brother and 1 Sister',
+    positionInFamily: 'Eldest',
+    sistersStatus: 'University Student',
+    brothersStatus: 'Software Engineer',
+    financialStatus: 'Upper Middle Class (Respectable Family)',
   },
   matrimonial: {
-    religiousPractice: 'Regular 5 times Salah, observant of Islamic principles, ethical living.',
+    religiousPractice: 'Regular 5 times Salah, observant of Islamic principles and ethical lifestyle.',
     partnerExpectations:
-      'Seeking a modest, religious, and educated life partner from a respectable family who values mutual respect, companionship, and Islamic lifestyle.',
-    guardianContact: '01819-000000 (Father / Guardian)',
+      'Seeking a modest, educated, and practicing life partner from a respectable family who values mutual respect, kindness, and family harmony.',
+    guardianContact: '01800-000000 (Father / Guardian)',
   },
   experiences: [
     {
       id: 'exp-1',
-      role: 'Project Director',
+      role: 'Senior Brand Consultant',
       organization: 'Creative CONCEPT Point',
       period: '2023 - Present',
-      location: 'Chattogram',
-      description: 'Heading Creative Design, Printing, Program Branding & Event Management Services for corporate and institutional clients.',
+      location: 'Dhaka',
+      description: 'Leading Creative Design, Corporate Printing, Program Branding & Event Management Services for national and corporate clients.',
       isVenture: true,
     },
     {
       id: 'exp-2',
-      role: 'Owner & Lead Artist',
-      organization: 'NokshaX',
-      period: '2022 - Present',
-      location: 'Chattogram',
-      description: 'Specialized in Arabic calligraphy, Islamic typography, and bespoke corporate branding identities.',
+      role: 'Founder & Lead Designer',
+      organization: 'Canvas & Craft Studio',
+      period: '2021 - Present',
+      location: 'Dhaka',
+      description: 'Specialized in bespoke typography, brand packaging, and digital marketing campaigns.',
       isVenture: true,
     },
     {
       id: 'exp-3',
-      role: 'Founding Director',
-      organization: 'Gulshakhali Creative School',
-      period: '2026 - Present',
-      location: 'Rangamati',
-      description: 'Spearheading modern creative and artistic curriculum development for underprivileged students.',
-      isVenture: true,
+      role: 'UI/UX & Visual Designer',
+      organization: 'NextGen Digital Ltd.',
+      period: '2020 - 2022',
+      location: 'Dhaka',
+      description: 'Designed interactive web applications, editorial layouts, and brand guidelines.',
+      isVenture: false,
     },
   ],
   organizationalExperience: [
     {
       id: 'org-1',
-      role: 'Founding Director',
-      organization: 'Gulshakhali Development Foundation',
-      period: '2026 - Present',
-      description: 'Directing community welfare, educational scholarships, and creative empowerment drives.',
+      role: 'General Secretary',
+      organization: 'Bangladesh Youth Creative Forum',
+      period: '2024 - Present',
+      description: 'Directing youth skill development workshops, design bootcamps, and community initiatives.',
     },
     {
       id: 'org-2',
-      role: 'Member',
-      organization: 'BICS, Chattogram City South',
-      period: '2022 - Present',
-      description: 'Active member engaging in socioeconomic advocacy and youth leadership summits.',
+      role: 'Executive Member',
+      organization: 'National Art & Cultural Society',
+      period: '2022 - 2024',
+      description: 'Organized annual national exhibitions, seminars, and cultural showcases.',
     },
     {
       id: 'org-3',
-      role: 'Former Assistant Director',
-      organization: 'Parabar Shahitto Shongskriti Shongshod Chattogram',
-      period: '2025 - 2026',
-      description: 'Organized literary festivals, book discussions, and cultural showcases.',
-    },
-    {
-      id: 'org-4',
-      role: 'Former Director',
-      organization: 'Saikat Shahitto Shangskritik Shongshod Chattogram',
-      period: '2024 - 2025',
-      description: 'Coordinated inter-district cultural conferences, competitions, and publications.',
-    },
-    {
-      id: 'org-5',
-      role: 'Former Assistant Director',
-      organization: 'Kisholoy Art & Cultural Academy Chattogram',
-      period: '2023',
-      description: 'Instructed junior calligraphy workshops and exhibition staging.',
+      role: 'Volunteer Coordinator',
+      organization: 'Green Bangladesh Foundation',
+      period: '2021 - 2022',
+      description: 'Coordinated social outreach programs, educational distributions, and charity drives.',
     },
   ],
   education: [
     {
       id: 'edu-1',
-      degree: 'B.A. (Degree Pass Course)',
-      institution: 'Government Hazi Muhammad Mohsin College, Chattogram',
-      yearOrSession: '2022-2023 Session',
-      result: 'Appeared',
+      degree: 'B.F.A. in Graphic Design & Multimedia',
+      institution: 'University of Dhaka',
+      yearOrSession: '2018-2022 Session',
+      result: 'CGPA 3.75',
     },
     {
       id: 'edu-2',
-      degree: 'Alim Examination',
-      institution: 'Patenga Islamia Fazil Madrasah, Chattogram',
-      yearOrSession: '2020',
-      result: 'GPA 4.80',
+      degree: 'Higher Secondary Certificate (HSC)',
+      institution: 'Dhaka City College',
+      yearOrSession: '2018',
+      result: 'GPA 5.00',
     },
     {
       id: 'edu-3',
-      degree: 'Dakhil Examination',
-      institution: 'Al-Amin Islamia Fazil Madrasah, Rangamati',
-      yearOrSession: '2018',
+      degree: 'Secondary School Certificate (SSC)',
+      institution: 'Cumilla Zilla School',
+      yearOrSession: '2016',
       result: 'GPA 5.00',
     },
   ],
   skills: [
-    { id: 'sk-1', name: 'Graphic Design', level: 95, category: 'technical' },
-    { id: 'sk-2', name: 'Calligraphy & Typography', level: 92, category: 'technical' },
-    { id: 'sk-3', name: 'Event Management', level: 88, category: 'soft' },
-    { id: 'sk-4', name: 'Program Branding', level: 90, category: 'technical' },
-    { id: 'sk-5', name: 'Art Direction', level: 85, category: 'technical' },
-    { id: 'sk-6', name: 'Youth Mentorship', level: 84, category: 'soft' },
+    { id: 'sk-1', name: 'Brand Identity & Graphic Design', level: 95, category: 'technical' },
+    { id: 'sk-2', name: 'Typography & Calligraphy', level: 90, category: 'technical' },
+    { id: 'sk-3', name: 'UI/UX & Print Production', level: 88, category: 'technical' },
+    { id: 'sk-4', name: 'Event & Program Branding', level: 92, category: 'soft' },
+    { id: 'sk-5', name: 'Creative Art Direction', level: 86, category: 'technical' },
+    { id: 'sk-6', name: 'Team Leadership', level: 85, category: 'soft' },
   ],
   projects: [
     {
       id: 'proj-1',
-      title: 'National Calligraphy Exhibition',
+      title: 'National Brand & Typography Expo',
       subtitle: 'Creative Concept Point',
       link: 'creativeconceptpoint.com',
-      description: 'Conceptualized and curated nationwide visual art exhibit attracting 50+ contemporary calligraphers.',
+      description: 'Curated a nationwide design exhibition featuring 60+ leading brand designers and artists.',
     },
     {
       id: 'proj-2',
-      title: 'Gulshakhali Creative School Portal',
-      subtitle: 'Education Initiative',
-      description: 'Launched localized creative curriculum serving over 200 village children in Chittagong Hill Tracts.',
+      title: 'Digital Youth Design Academy',
+      subtitle: 'Skill Development Initiative',
+      description: 'Trained over 500 young students in modern graphic design, freelancing, and visual communication.',
     },
   ],
   customSections: [
     {
       id: 'cust-1',
-      title: 'Special Honors & Recognitions',
+      title: 'Awards & Achievements',
       items: [
-        { id: 'c1', label: 'Art Excellence Award', value: 'Chittagong Cultural Council (2024)' },
-        { id: 'c2', label: 'Youth Leadership Fellow', value: 'National Youth Foundation (2025)' },
+        { id: 'c1', label: 'Best Brand Identity Award', value: 'Bangladesh Design Summit (2024)' },
+        { id: 'c2', label: 'Youth Innovation Fellowship', value: 'National Creative Council (2023)' },
       ],
     },
   ],
@@ -190,167 +258,153 @@ export const SAMPLE_DATA_BN: CVData = {
   inlineEditing: false,
   useBengaliNumerals: true,
   personal: {
-    fullName: 'মো. মিনহাজুল আবেদীন',
-    tagline: 'গ্রাফিক ডিজাইনার ও ক্যালিগ্রাফার',
-    photoUrl: '/assets/aistudio/Minhaj_Bio-data_14f425df.jpg',
-    photoZoom: 1.15,
-    photoOffset: { x: 0, y: -20 },
+    fullName: 'তানভীর আহমেদ',
+    tagline: 'ক্রিয়েটিভ ডিজাইনার ও ব্র্যান্ড কনসালটেন্ট',
+    photoUrl: DEFAULT_AVATAR_URL,
+    photoZoom: 1.0,
+    photoOffset: { x: 0, y: 0 },
     photoShape: 'circle',
-    phone: '০১৫৭১-২৪৭৯০২',
-    email: 'minhajulabedin902@gmail.com',
+    phone: '০১৭০০-০০০০০০',
+    email: 'tanvir.creative@example.com',
     website: 'creativeconceptpoint.com',
-    facebook: 'Md. Minhajul Abedin',
-    instagram: 'minhaj_calligraphy',
-    linkedin: 'minhajul-abedin',
-    currentAddress: 'দেওয়ানহাট, চট্টগ্রাম, বাংলাদেশ',
-    permanentAddress: 'গুলশাখালী, লংগদু, রাঙামাটি, বাংলাদেশ',
-    dob: '১৮ অক্টোবর ২০০০',
-    age: '২৬ বছর',
-    height: '৫\'৫"',
-    weight: '৬৮ কেজি',
+    facebook: 'Tanvir Ahmed Official',
+    instagram: 'tanvir_design_studio',
+    linkedin: 'tanvir-ahmed-bd',
+    currentAddress: 'ধানমন্ডি, ঢাকা, বাংলাদেশ',
+    permanentAddress: 'সদর রোড, কুমিল্লা, বাংলাদেশ',
+    dob: '১৫ জানুয়ারি ১৯৯৯',
+    age: '২৭ বছর',
+    height: '৫\'৭"',
+    weight: '৬৬ কেজি',
     complexion: 'উজ্জ্বল শ্যামবর্ণ',
-    bloodGroup: 'AB+',
+    bloodGroup: 'O+',
     maritalStatus: 'অবিবাহিত',
     religion: 'ইসলাম',
   },
   professionalSummary:
-    'একজন সৃজনশীল ডিজাইন উদ্যোক্তা ও ক্যালিগ্রাফার যিনি ব্র্যান্ডিং, আধুনিক প্রিন্টিং ও বৃহৎ সাংস্কৃতিক ইভেন্ট পরিচালনায় দক্ষ। যুব উন্নয়ন ও সামাজিক ফাউন্ডেশন কার্যক্রমে নেতৃত্ব প্রদানে নিবেদিতপ্রাণ।',
+    'একজন সৃজনশীল ব্র্যান্ড কনসালটেন্ট ও গ্রাফিক ডিজাইনার যিনি কর্পোরেট ব্র্যান্ডিং, আধুনিক প্রিন্টিং ও ইভেন্ট ম্যানেজমেন্টে দক্ষ। সৃজনশীল ডিজাইন ও আধুনিক প্রযুক্তির সমন্বয়ে মানসম্মত সেবা প্রদানে নিবেদিতপ্রাণ।',
   family: {
-    fatherName: 'আনোয়ার হোসেন',
-    fatherOccupation: 'ফার্মেসি ব্যবসায়ী',
-    motherName: 'জুছনা বেগম',
+    fatherName: 'মো. রফিকুল ইসলাম',
+    fatherOccupation: 'অবসরপ্রাপ্ত সরকারি কর্মকর্তা',
+    motherName: 'তাহমিনা আক্তার',
     motherOccupation: 'গৃহিণী',
-    siblingsCount: '৩ বোন ও ১ ভাই',
-    positionInFamily: 'পরিবারের কনিষ্ঠ সন্তান',
-    sistersStatus: 'তিন বোনই বিবাহিতা ও সুপ্রতিষ্ঠিত',
-    brothersStatus: 'কর্মজীবী / শিক্ষার্থী',
+    siblingsCount: '১ ভাই ও ১ বোন',
+    positionInFamily: 'পরিবারের জ্যেষ্ঠ সন্তান',
+    sistersStatus: 'বিশ্ববিদ্যালয়ে অধ্যয়নরত',
+    brothersStatus: 'সফটওয়্যার ইঞ্জিনিয়ার',
     financialStatus: 'উচ্চ-মধ্যবিত্ত ও সুপ্রতিষ্ঠিত পরিবার',
   },
   matrimonial: {
-    religiousPractice: 'নিয়মিত পাঁচ ওয়াক্ত নামাজ আদায়, পর্দা ও হালাল উপার্জনে বিশ্বাসী।',
+    religiousPractice: 'নিয়মিত পাঁচ ওয়াক্ত নামাজ আদায়, ইসলামিক অনুশাসন ও হালাল উপার্জনে বিশ্বাসী।',
     partnerExpectations:
-      'শিক্ষিত, মার্জিত, দ্বীনদার এবং পারিবারিক মূল্যবোধসম্পন্ন জীবনসঙ্গিনী প্রত্যাশিত; যিনি পারস্পরিক শ্রদ্ধা ও স্নেহের মাধ্যমে সুন্দর একটি পরিবার গড়ে তুলতে আগ্রহী।',
-    guardianContact: '০১৮১৯-০০০০০০ (পিতা / অভিভাবক)',
+      'শিক্ষিত, মার্জিত, দ্বীনদার এবং পারিবারিক মূল্যবোধসম্পন্ন জীবনসঙ্গিনী প্রত্যাশিত; যিনি পারস্পরিক শ্রদ্ধা ও সম্প্রীতির মাধ্যমে সুন্দর একটি পরিবার গড়ে তুলতে আগ্রহী।',
+    guardianContact: '০১৮০০-০০০০০০ (পিতা / অভিভাবক)',
   },
   experiences: [
     {
       id: 'exp-1',
-      role: 'প্রজেক্ট ডিরেক্টর',
+      role: 'সিনিয়র ব্র্যান্ড কনসালটেন্ট',
       organization: 'ক্রিয়েটিভ কনসেপ্ট পয়েন্ট (Creative CONCEPT Point)',
       period: '২০২৩ - বর্তমান',
-      location: 'চট্টগ্রাম',
-      description: 'ক্রিয়েটিভ ডিজাইন, প্রিন্টিং, ব্র্যান্ডিং ও ইভেন্ট ম্যানেজমেন্ট সার্ভিসের সার্বিক পরিচালনা।',
+      location: 'ঢাকা',
+      description: 'ক্রিয়েটিভ ডিজাইন, কর্পোরেট প্রিন্টিং, প্রোগ্রাম ব্র্যান্ডিং ও ইভেন্ট ম্যানেজমেন্ট সার্ভিসের সার্বিক পরিচালনা।',
       isVenture: true,
     },
     {
       id: 'exp-2',
-      role: 'স্বত্বাধিকারী ও লিড আর্টিস্ট',
-      organization: 'নকশাএক্স (NokshaX)',
-      period: '২০২২ - বর্তমান',
-      location: 'চট্টগ্রাম',
-      description: 'আরবি ক্যালিগ্রাফি, ইসলামিক টাইপোগ্রাফি এবং আধুনিক ব্র্যান্ড আইডেন্টিটি ডিজাইন।',
+      role: 'প্রতিষ্ঠাতা ও লিড ডিজাইনার',
+      organization: 'ক্যানভাস অ্যান্ড ক্রাফট স্টুডিও',
+      period: '২০২১ - বর্তমান',
+      location: 'ঢাকা',
+      description: 'কর্পোরেট ব্র্যান্ড আইডেন্টিটি, ক্যালিগ্রাফি ও ক্রিয়েটিভ প্যাকেজিং ডিজাইন পরিচালনা।',
       isVenture: true,
     },
     {
       id: 'exp-3',
-      role: 'প্রতিষ্ঠাতা পরিচালক',
-      organization: 'গুলশাখালী ক্রিয়েটিভ স্কুল',
-      period: '২০২৬ - বর্তমান',
-      location: 'রাঙামাটি',
-      description: 'সুবিধাবঞ্চিত শিশুদের জন্য সৃজনশীল শিক্ষা ও শিল্পকলা প্রশিক্ষণ কার্যক্রম পরিচালনা।',
-      isVenture: true,
+      role: 'ইউআই/ইউএক্স ও ভিজ্যুয়াল ডিজাইনার',
+      organization: 'নেক্সটজেন ডিজিটাল লিমিটেড',
+      period: '২০২০ - ২০২২',
+      location: 'ঢাকা',
+      description: 'ডিজিটাল মিডিয়া ক্যাম্পেইন, ওয়েব ইন্টারফেস এবং প্রকাশনা ডিজাইনে কাজ করার অভিজ্ঞতা।',
+      isVenture: false,
     },
   ],
   organizationalExperience: [
     {
       id: 'org-1',
-      role: 'প্রতিষ্ঠাতা পরিচালক',
-      organization: 'গুলশাখালী ডেভেলপমেন্ট ফাউন্ডেশন',
-      period: '২০২৬ - বর্তমান',
-      description: 'সামাজিক উন্নয়ন, মেধা বৃত্তি ও প্রান্তিক জনকল্যাণমূলক প্রকল্প পরিচালনা।',
+      role: 'সাধারণ সম্পাদক',
+      organization: 'বাংলাদেশ ইয়ুথ ক্রিয়েটিভ ফোরাম',
+      period: '২০২৪ - বর্তমান',
+      description: 'তরুণদের দক্ষতা উন্নয়ন কর্মশালা, ডিজাইন সেমিনার ও শিক্ষামূলক কার্যক্রম পরিচালনা।',
     },
     {
       id: 'org-2',
-      role: 'সদস্য',
-      organization: 'বিআইসিএস, চট্টগ্রাম মহানগর দক্ষিণ',
-      period: '২০২২ - বর্তমান',
-      description: 'সামাজিক-সাংস্কৃতিক কার্যক্রম ও যুব নেতৃত্ব বিকাশ কর্মকাণ্ডে সম্পৃক্ত।',
+      role: 'কার্যনির্বাহী সদস্য',
+      organization: 'ন্যাশনাল আর্ট অ্যান্ড কালচারাল সোসাইটি',
+      period: '২০২২ - ২০২৪',
+      description: 'জাতীয় পর্যায়ের শিল্প প্রদর্শনী, প্রকাশনা ও সাংস্কৃতিক অনুষ্ঠান আয়োজনে সক্রিয় ভূমিকা।',
     },
     {
       id: 'org-3',
-      role: 'সাবেক সহকারী পরিচালক',
-      organization: 'পারাবার সাহিত্য সংস্কৃতি সংসদ, চট্টগ্রাম',
-      period: '২০২৫ - ২০২৬',
-      description: 'সাহিত্য আসর, সাংস্কৃতিক উৎসব ও জাতীয় দিবস উপলক্ষে প্রদর্শনী আয়োজন।',
-    },
-    {
-      id: 'org-4',
-      role: 'সাবেক পরিচালক',
-      organization: 'সৈকত সাহিত্য সাংস্কৃতিক সংসদ, চট্টগ্রাম',
-      period: '২০২৪ - ২০২৫',
-      description: 'আন্তঃজেলা সাংস্কৃতিক সম্মেলন ও প্রতিযোগিতা সমন্বয়।',
-    },
-    {
-      id: 'org-5',
-      role: 'সাবেক সহকারী পরিচালক',
-      organization: 'কিশলয় আর্ট অ্যান্ড কালচারাল একাডেমি, চট্টগ্রাম',
-      period: '২০২৩',
-      description: 'চিত্রাঙ্কন ও ক্যালিগ্রাফি কর্মশালা পরিচালনা।',
+      role: 'সমন্বয়ক',
+      organization: 'গ্রিন বাংলাদেশ ফাউন্ডেশন',
+      period: '২০২১ - ২০২২',
+      description: 'সামাজিক কল্যাণমূলক কার্যক্রম, শিক্ষাবৃত্তি প্রদান এবং স্বেচ্ছাসেবী কর্মসূচি সমন্বয়।',
     },
   ],
   education: [
     {
       id: 'edu-1',
-      degree: 'বি.এ. (ডিগ্রি পাস কোর্স)',
-      institution: 'সরকারি হাজী মুহাম্মদ মহসিন কলেজ, চট্টগ্রাম',
-      yearOrSession: '২০২২-২০২৩ শিক্ষাবর্ষ',
-      result: 'পরীক্ষার্থী',
+      degree: 'বি.এফ.এ (গ্রাফিক ডিজাইন ও মাল্টিমিডিয়া)',
+      institution: 'ঢাকা বিশ্ববিদ্যালয়',
+      yearOrSession: '২০১৮-২০২২ সেশন',
+      result: 'সিজিপিএ ৩.৭৫',
     },
     {
       id: 'edu-2',
-      degree: 'আলিম পরীক্ষা',
-      institution: 'পতেঙ্গা ইসলামিয়া ফাজিল মাদ্রাসা, চট্টগ্রাম',
-      yearOrSession: '২০২০',
-      result: 'জিপিএ ৪.৮০',
+      degree: 'উচ্চ মাধ্যমিক সার্টিফিকেট (এইচএসসি)',
+      institution: 'ঢাকা সিটি কলেজ',
+      yearOrSession: '২০১৮',
+      result: 'জিপিএ ৫.০০',
     },
     {
       id: 'edu-3',
-      degree: 'দাখিল পরীক্ষা',
-      institution: 'আল-আমিন ইসলামিয়া ফাজিল মাদ্রাসা, লংগদু, রাঙামাটি',
-      yearOrSession: '২০১৮',
+      degree: 'মাধ্যমিক স্কুল সার্টিফিকেট (এসএসসি)',
+      institution: 'কুমিল্লা জিলা স্কুল',
+      yearOrSession: '২০১৬',
       result: 'জিপিএ ৫.০০',
     },
   ],
   skills: [
-    { id: 'sk-1', name: 'গ্রাফিক ডিজাইন', level: 95, category: 'technical' },
-    { id: 'sk-2', name: 'ক্যালিগ্রাফি ও টাইপোগ্রাফি', level: 92, category: 'technical' },
-    { id: 'sk-3', name: 'ইভেন্ট ম্যানেজমেন্ট', level: 88, category: 'soft' },
-    { id: 'sk-4', name: 'প্রোগ্রাম ব্র্যান্ডিং', level: 90, category: 'technical' },
-    { id: 'sk-5', name: 'আর্ট ডিরেকশন', level: 85, category: 'technical' },
-    { id: 'sk-6', name: 'নেতৃত্ব ও মোটিভেশন', level: 86, category: 'soft' },
+    { id: 'sk-1', name: 'গ্রাফিক ডিজাইন ও ব্র্যান্ডিং', level: 95, category: 'technical' },
+    { id: 'sk-2', name: 'টাইপোগ্রাফি ও ক্যালিগ্রাফি', level: 90, category: 'technical' },
+    { id: 'sk-3', name: 'প্রিন্ট প্রোডাকশন ও ইউআই ডিজাইন', level: 88, category: 'technical' },
+    { id: 'sk-4', name: 'ইভেন্ট ও প্রোগ্রাম ব্র্যান্ডিং', level: 92, category: 'soft' },
+    { id: 'sk-5', name: 'আর্ট ডিরেকশন', level: 86, category: 'technical' },
+    { id: 'sk-6', name: 'টিম লিডারশিপ ও ম্যানেজমেন্ট', level: 85, category: 'soft' },
   ],
   projects: [
     {
       id: 'proj-1',
-      title: 'জাতীয় ক্যালিগ্রাফি প্রদর্শনী',
+      title: 'ন্যাশনাল ব্র্যান্ড ও টাইপোগ্রাফি এক্সপো',
       subtitle: 'ক্রিয়েটিভ কনসেপ্ট পয়েন্ট',
       link: 'creativeconceptpoint.com',
-      description: '৫০ জনের অধিক দেশের প্রথিতযশা ক্যালিগ্রাফারের অংশগ্রহণে সফল শিল্প প্রদর্শনী আয়োজন।',
+      description: 'দেশব্যাপী ৬০+ শীর্ষস্থানীয় ডিজাইনার ও শিল্পীদের নিয়ে বৃহৎ প্রদর্শনীর সফল আয়োজন।',
     },
     {
       id: 'proj-2',
-      title: 'গুলশাখালী ক্রিয়েটিভ স্কুল প্রকল্প',
-      subtitle: 'শিক্ষা বিস্তার কার্যক্রম',
-      description: 'পার্বত্য অঞ্চলের প্রত্যন্ত অঞ্চলে ২০০+ শিক্ষার্থীদের বিনামূল্যে আর্ট ও কম্পিউটার শিক্ষা।',
+      title: 'ডিজিটাল ইয়ুথ ডিজাইন একাডেমি',
+      subtitle: 'দক্ষতা উন্নয়ন উদ্যোগ',
+      description: '৫০০+ তরুণ শিক্ষার্থীকে আধুনিক গ্রাফিক ডিজাইন ও ভিজ্যুয়াল কমিউনিকেশন বিষয়ে প্রশিক্ষণ প্রদান।',
     },
   ],
   customSections: [
     {
       id: 'cust-1',
-      title: 'বিশেষ সম্মাননা ও স্বীকৃতি',
+      title: 'বিশেষ সম্মাননা ও অর্জন',
       items: [
-        { id: 'c1', label: 'আর্ট এক্সেলেন্স অ্যাওয়ার্ড', value: 'চট্টগ্রাম কালচারাল কাউন্সিল (২০২৪)' },
-        { id: 'c2', label: 'ইয়ুথ লিডারশিপ ফেলোশিপ', value: 'ন্যাশনাল ইয়ুথ ফোরাম (২০২৫)' },
+        { id: 'c1', label: 'শ্রেষ্ঠ ব্র্যান্ড আইডেন্টিটি অ্যাওয়ার্ড', value: 'বাংলাদেশ ডিজাইন সামিট (২০২৪)' },
+        { id: 'c2', label: 'ইয়ুথ ইনোভেশন ফেলোশিপ', value: 'ন্যাশনাল ক্রিয়েটিভ কাউন্সিল (২০২৩)' },
       ],
     },
   ],
